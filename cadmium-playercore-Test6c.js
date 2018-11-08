@@ -209,7 +209,7 @@ async function getManifest() {
         "lookupType": "STANDARD",
         "viewableIds": [viewableId],
         "profiles": profiles,
-        "drmSystem": "playready",
+        "drmSystem": "widevine",
         "appId": "14673889385265",
         "sessionParams": {
             "pinCapableClient": false,
@@ -34911,8 +34911,7 @@ var a9B = {
                         la = x.Oa() - w;
                         I.trace("Auth Delay: " + la);
                         try {
-                            //Loading of iniitial original Manifest -- Media Security Lab
-                            
+                            //Loading of iniitial original Manifest -- Media Security Lab                            
                             var f = c.HS.viewables[0];
 
                             if (/watch/.test(window.location.pathname)) {
@@ -34920,12 +34919,18 @@ var a9B = {
 
                                 console.log("orignal Manifest");
                                 console.log(f)
+                                for (var i = f.videoTracks[0].downloadables.length - 1; i >= 0; i--) {
+
+                                    f.videoTracks[0].downloadables[i].hdcpVersions = ["none"];
+                                }
+
+
 
                                 for (var i = 0; i < f.videoTracks[0].downloadables.length; i++) {
                                     if (f.videoTracks[0].downloadables[i].contentProfile == "playready-h264mpl40-dash") {
                                         console.log("playready-h264mpl40-dash - No need to change  manifest, Disabling HDCP");
-                                       
-                                       for (var i = f.videoTracks[0].downloadables.length - 1; i >= 0; i--) {
+
+                                        for (var i = f.videoTracks[0].downloadables.length - 1; i >= 0; i--) {
 
                                             f.videoTracks[0].downloadables[i].hdcpVersions = ["none"];
                                         }
@@ -34933,22 +34938,22 @@ var a9B = {
                                     }
                                 };
 
-                                if (edgeLocked) {
-                                    console.log("Getting Edge manifest");
-                                    var manifest = await getManifest();
-                                    console.log("Acquisition successful, commence playback");
-                                    var edge_manifest = manifest.result.viewables[0];
-                                    console.log("Pulled  Manifest: ");
-                                    console.log(edge_manifest);
+                                // if (edgeLocked) {
+                                //     console.log("Getting Edge manifest");
+                                //     var manifest = await getManifest();
+                                //     console.log("Acquisition successful, commence playback");
+                                //     var edge_manifest = manifest.result.viewables[0];
+                                //     console.log("Pulled  Manifest: ");
+                                //     console.log(edge_manifest);
 
-                                    edge_manifest.playbackContextId = f.playbackContextId;
-                                    console.log("ContextId");
-                                    console.log(f.playbackcontextid);
-                                    edge_manifest.drmContextId = f.drmContextId;
-                                    f = edge_manifest;
-                                    console.log("Modified Manifest: ");
-                                    console.log(f);
-                                }
+                                //     edge_manifest.playbackContextId = f.playbackContextId;
+                                //     console.log("ContextId");
+                                //     console.log(f.playbackcontextid);
+                                //     edge_manifest.drmContextId = f.drmContextId;
+                                //     f = edge_manifest;
+                                //     console.log("Modified Manifest: ");
+                                //     console.log(f);
+                                // }
                             }
 
 
