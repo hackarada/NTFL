@@ -26002,6 +26002,8 @@ y4QQ.q3X = function(m3X) { return { R9y: function() { var W3X, Y3X = arguments; 
                                 f9z = 2; while (f9z !== 3) { switch (f9z) {
                                         case 2:
                                             g = d.profiles;
+                                            console.log("profiles");
+                                            console.log(d);
                                             (d = g && 0 <= g.indexOf(k)) && (p = c.filter(function(c) { var K9z;
                                                 K9z = 2; while (K9z !== 1) { switch (K9z) {
                                                         case 2:
@@ -26064,6 +26066,8 @@ y4QQ.q3X = function(m3X) { return { R9y: function() { var W3X, Y3X = arguments; 
                                             return d; break;
                                         case 2:
                                             d = b.profiles;
+                                            console.log("profiles");
+                                            console.log(d);
                                             F9z = 5; break;
                                         case 5:
                                             F9z = (d = d && 0 <= d.indexOf(a)) ? 4 : 3; break;
@@ -37432,7 +37436,7 @@ y4QQ.q3X = function(m3X) { return { R9y: function() { var W3X, Y3X = arguments; 
         k = a(0);
         h = a(44);
         g = a(2);
-        b.prototype.Sn = function(a) { return this.profile.id === a ? this.profile : this.profiles[a]; };
+        b.prototype.Sn = function(a) { return this.profile.id === a ? this.profile : this.profiles[a]; console.log(this)};
         b.prototype.load = function() { var a;
             a = this;
             this.log.trace("Loading accounts from storage"); return new Promise(function(b, c) { a.XH().then(function(b) { return b ? a.storage.load("accounts") : Promise.resolve(void 0); }).then(function(c) { c && (a.log.trace("Persisted account data", JSON.stringify(c.value, null, "  ")), a.SUa(c.value), a.Wd.mk.Hj("DebugEvent", { kind: "playerAccountManagerLoad", profile: a.profile && a.profile.id }));
