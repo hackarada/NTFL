@@ -6851,7 +6851,11 @@ y4QQ.q3X = function(m3X) { return { R9y: function() { var W3X, Y3X = arguments; 
             function Cb(a) { var b, c;
                 b = h.Sd && h.Sd.value && h.Sd.value.Cb; if (b) { c = {};
                     b.forEach(function(a) { c[a.ke] = void 0; });
-                    a.videoProfiles = Object.keys(c); } }
+                    a.videoProfiles = Object.keys(c); 
+                    console.log("videoProfiles");
+                    console.log(a.videoProfiles);
+                } 
+                }
 
             function Hb(a) { var b, c, d; try { b = v.ba.get(V.pf).createElement("canvas");
                     c = b.getContext("webgl") || b.getContext("experimental-webgl"); if (c) { d = c.getExtension("WEBGL_debug_renderer_info");
